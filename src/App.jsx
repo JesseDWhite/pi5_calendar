@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import weatherConfig from './config';
 import './App.css'
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
   useEffect(() => {
     const getForecast = async () => {
       const openWeatherCall = `https://api.openweathermap.org/data/3.0/onecall?lat=38.61593458031881&lon=-90.24595036070286&cnt=7&units=imperial&exclude=hourly,minutely,alerts&appid=${import.meta.env.VITE_API_KEY}`;
+      console.log('run')
       try {
         const response = await fetch(openWeatherCall);
         if (!response.ok) {
@@ -30,18 +32,23 @@ const App = () => {
           let json = await response.json();
           const removeUneededDays = json.daily.slice(1, 6);
           json.daily = removeUneededDays;
-          console.log(json)
-          setForecast(json)
+          setForecast(json);
         }
       } catch (error) {
-        console.log(error)
+        console.log(error);
         setLoading(true);
       } finally {
         setLoading(false);
       }
     }
-
     getForecast();
+
+    const intervalId = setInterval(() => {
+      getForecast();
+    }, 30 * 60 * 1000); // 30 minutes * 60 seconds * 1000 milliseconds
+
+    return () => clearInterval(intervalId);
+
   }, []);
 
   return (
@@ -58,7 +65,7 @@ const App = () => {
                       <div className="search-city">
                         <span className="city"> St. Louis </span>
                         <span className="current-weather">
-                          <img src={getWeatherIcon(forecast.current.weather[0].icon)} alt={forecast.current.weather[0].description} width="50px" />
+                          <img src={weatherConfig[forecast.current.weather[0].icon]} alt={forecast.current.weather[0].description} width="65px" />
                         </span>
                       </div>
                       <div>
@@ -94,7 +101,7 @@ const App = () => {
                             <div className="row">
                               <div className="col-12">{daysInWeek[new Date(getDate(idx + 1)).getDay()]}</div>
                               <div className="col-12 weather-icon">
-                                <img src={getWeatherIcon(day.weather[0].icon)} alt="rain" width="40px" />
+                                <img src={weatherConfig[day.weather[0].icon]} alt="rain" width="40px" />
                               </div>
                               <div className="col-12">
                                 <span className="day-temp"> {day.temp.max.toFixed(0)}°/ </span>
