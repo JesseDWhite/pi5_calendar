@@ -7,6 +7,7 @@ const App = () => {
   const [forecast, setForecast] = useState(null);
   const [loading, setLoading] = useState(true);
   const [daysInWeek] = useState(['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']);
+  const [timestamp, setTimestamp] = useState(null);
 
   const getWeatherIcon = (code) => {
     const url = `https://openweathermap.org/img/wn/${code}@2x.png`;
@@ -22,7 +23,6 @@ const App = () => {
   useEffect(() => {
     const getForecast = async () => {
       const openWeatherCall = `https://api.openweathermap.org/data/3.0/onecall?lat=38.61593458031881&lon=-90.24595036070286&cnt=7&units=imperial&exclude=hourly,minutely,alerts&appid=${import.meta.env.VITE_API_KEY}`;
-      console.log('run')
       try {
         const response = await fetch(openWeatherCall);
         if (!response.ok) {
@@ -39,6 +39,8 @@ const App = () => {
         setLoading(true);
       } finally {
         setLoading(false);
+        const now = new Date();
+        setTimestamp(now.toLocaleTimeString());
       }
     }
     getForecast();
@@ -51,11 +53,20 @@ const App = () => {
 
   }, []);
 
+  useEffect(() => {
+    const calendarInterval = setInterval(() => {
+      console.log('new calendar')
+      document.getElementById('calendar-iframe').src = 'https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FChicago&title=Family%20Calendar&showTz=0&showPrint=0&src=amVzc2Uud2hpdGU2QGdtYWlsLmNvbQ&src=ZmFtaWx5MTIwMDM0ODMxNzY0MjgxMjczODdAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%230030a5&color=%23616161&color=%230B8043'
+    }, 10 * 60 * 1000); // 10 minutes * 60 seconds * 1000 milliseconds
+
+    return () => clearInterval(calendarInterval);
+  }, []);
+
   return (
     <>
       {!loading ?
         (<div id='calendar'>
-          <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FChicago&title=Family%20Calendar&showTz=0&showPrint=0&src=amVzc2Uud2hpdGU2QGdtYWlsLmNvbQ&src=ZmFtaWx5MTIwMDM0ODMxNzY0MjgxMjczODdAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%230030a5&color=%23616161&color=%230B8043" style={{ borderWidth: 0, borderRadius: '20px' }} width="600" height="600"></iframe>
+          <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FChicago&title=Family%20Calendar&showTz=0&showPrint=0&src=amVzc2Uud2hpdGU2QGdtYWlsLmNvbQ&src=ZmFtaWx5MTIwMDM0ODMxNzY0MjgxMjczODdAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%230030a5&color=%23616161&color=%230B8043" style={{ borderWidth: 0, borderRadius: '20px' }} width="600" height="600" id='calendar-iframe'></iframe>
           <div className="outer">
             <div className="middle">
               <div className="inner">
@@ -82,13 +93,16 @@ const App = () => {
 
                     <div className="col-4 current-location-details">
                       <div className="col-12">
-                        <span className="precipitation">{forecast.current.weather[0].description}</span>
+                        <span className="precipitation">{forecast.current.weather[0].description.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); })}</span>
                       </div>
                       <div className="col-12">
                         Humidity: <span className="humidity">{forecast.current.humidity}%</span>
                       </div>
                       <div className="col-12">
                         Wind: <span className="wind-speed">{forecast.current.wind_speed.toFixed(0)}mph</span>
+                      </div>
+                      <div className="col-12">
+                        As of: <span className="timestamp">{timestamp}</span>
                       </div>
                     </div>
                   </div>
