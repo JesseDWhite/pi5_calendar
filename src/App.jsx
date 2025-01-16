@@ -67,7 +67,7 @@ const App = () => {
     <>
       {!loading ?
         (<>
-          <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FChicago&title=Family%20Calendar&showTz=0&showPrint=0&src=amVzc2Uud2hpdGU2QGdtYWlsLmNvbQ&src=ZmFtaWx5MTIwMDM0ODMxNzY0MjgxMjczODdAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%230030a5&color=%23616161&color=%230B8043" style={{ borderWidth: 0, borderRadius: '20px' }} width="590" height="700" id='calendar-iframe'></iframe>
+          <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FChicago&title=Family%20Calendar&showTz=0&showPrint=0&src=amVzc2Uud2hpdGU2QGdtYWlsLmNvbQ&src=ZmFtaWx5MTIwMDM0ODMxNzY0MjgxMjczODdAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%230030a5&color=%23616161&color=%230B8043" style={{ borderWidth: 0, borderRadius: '20px' }} width="600" height="720" id='calendar-iframe'></iframe>
           <div className="container-lg weather-app">
             <div className="row current-location">
               <div className="col current-city" id="current-city">
