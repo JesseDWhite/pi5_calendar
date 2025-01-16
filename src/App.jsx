@@ -57,7 +57,7 @@ const App = () => {
 
   useEffect(() => {
     const calendarInterval = setInterval(() => {
-      document.getElementById('calendar-iframe').src = 'https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FChicago&title=Family%20Calendar&showTz=0&showPrint=0&src=amVzc2Uud2hpdGU2QGdtYWlsLmNvbQ&src=ZmFtaWx5MTIwMDM0ODMxNzY0MjgxMjczODdAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%230030a5&color=%23616161&color=%230B8043'
+      document.getElementById('calendar-iframe').src = 'https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FChicago&showPrint=0&title=Family%20Calendar&showTz=0&src=amVzc2Uud2hpdGU2QGdtYWlsLmNvbQ&src=ZmFtaWx5MTIwMDM0ODMxNzY0MjgxMjczODdAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%23EF6C00&color=%23616161&color=%23795548'
     }, 10 * 60 * 1000); // 10 minutes * 60 seconds * 1000 milliseconds
 
     return () => clearInterval(calendarInterval);
