@@ -13,16 +13,17 @@ body {
   align-items: center;
   overflow-x: hidden;
   overflow-y: hidden;
+  width: 600px;
 }
 
-div.container.weather-app {
+div.container-lg.weather-app {
   display: block;
   margin: 0 auto;
   padding: 5px;
   border-radius: 20px;
   background-color: rgb(255, 255, 255);
   border: 10px solid #F0F4F9;
-  width: 600px
+  width: 590px;
 }
 
 /*current city forecast*/
@@ -40,6 +41,7 @@ div.current-location-details {
   font-size: 15px;
   padding-top: 25px;
 }
+
 
 .city {
   font-size: 22px;

@@ -55,7 +55,6 @@ const App = () => {
 
   useEffect(() => {
     const calendarInterval = setInterval(() => {
-      console.log('new calendar')
       document.getElementById('calendar-iframe').src = 'https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FChicago&title=Family%20Calendar&showTz=0&showPrint=0&src=amVzc2Uud2hpdGU2QGdtYWlsLmNvbQ&src=ZmFtaWx5MTIwMDM0ODMxNzY0MjgxMjczODdAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%230030a5&color=%23616161&color=%230B8043'
     }, 10 * 60 * 1000); // 10 minutes * 60 seconds * 1000 milliseconds
 
@@ -65,73 +64,67 @@ const App = () => {
   return (
     <>
       {!loading ?
-        (<div id='calendar'>
-          <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FChicago&title=Family%20Calendar&showTz=0&showPrint=0&src=amVzc2Uud2hpdGU2QGdtYWlsLmNvbQ&src=ZmFtaWx5MTIwMDM0ODMxNzY0MjgxMjczODdAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%230030a5&color=%23616161&color=%230B8043" style={{ borderWidth: 0, borderRadius: '20px' }} width="600" height="600" id='calendar-iframe'></iframe>
-          <div className="outer">
-            <div className="middle">
-              <div className="inner">
-                <div className="container weather-app">
-                  <div className="row current-location">
-                    <div className="col current-city" id="current-city">
-                      <div className="search-city">
-                        <span className="city"> St. Louis </span>
-                        <span className="current-weather">
-                          <img src={weatherConfig[forecast.current.weather[0].icon]} alt={forecast.current.weather[0].description} width="65px" />
-                        </span>
-                      </div>
-                      <div>
-                        <span className="temp"> {forecast.current.temp.toFixed(0)} </span>
-                        <span className="units">
-                          °F
-                        </span>
-                      </div>
-                      <div className="current-date">
-                        <span className="day" id="day"> {daysInWeek[new Date().getDay()]} </span>
-                        <span className="time" id="time"></span>
-                      </div>
-                    </div>
+        (<>
+          <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FChicago&title=Family%20Calendar&showTz=0&showPrint=0&src=amVzc2Uud2hpdGU2QGdtYWlsLmNvbQ&src=ZmFtaWx5MTIwMDM0ODMxNzY0MjgxMjczODdAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%230030a5&color=%23616161&color=%230B8043" style={{ borderWidth: 0, borderRadius: '20px' }} width="590" height="700" id='calendar-iframe'></iframe>
+          <div className="container-lg weather-app">
+            <div className="row current-location">
+              <div className="col current-city" id="current-city">
+                <div className="search-city">
+                  <span className="city"> St. Louis </span>
+                  <span className="current-weather">
+                    <img src={weatherConfig[forecast.current.weather[0].icon]} alt={forecast.current.weather[0].description} width="65px" />
+                  </span>
+                </div>
+                <div>
+                  <span className="temp"> {forecast.current.temp.toFixed(0)} </span>
+                  <span className="units">
+                    °F
+                  </span>
+                </div>
+                <div className="current-date">
+                  <span className="day" id="day"> {daysInWeek[new Date().getDay()]} </span>
+                  <span className="time" id="time"></span>
+                </div>
+              </div>
 
-                    <div className="col-4 current-location-details">
-                      <div className="col-12">
-                        <span className="precipitation">{forecast.current.weather[0].description.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); })}</span>
-                      </div>
-                      <div className="col-12">
-                        Humidity: <span className="humidity">{forecast.current.humidity}%</span>
-                      </div>
-                      <div className="col-12">
-                        Wind: <span className="wind-speed">{forecast.current.wind_speed.toFixed(0)}mph</span>
-                      </div>
-                      <div className="col-12">
-                        As of: <span className="timestamp">{timestamp}</span>
-                      </div>
-                    </div>
-                  </div>
-                  {/* <!--five days forecast--> */}
-                  <div className="container text-center five-days-forecast">
-                    <div className="row">
-                      {forecast.daily.map((day, idx) => {
-                        return (
-                          <div className="col" key={idx}>
-                            <div className="row">
-                              <div className="col-12">{daysInWeek[new Date(getDate(idx + 1)).getDay()]}</div>
-                              <div className="col-12 weather-icon">
-                                <img src={weatherConfig[day.weather[0].icon]} alt="rain" width="40px" />
-                              </div>
-                              <div className="col-12">
-                                <span className="day-temp"> {day.temp.max.toFixed(0)}°/ </span>
-                                <span className="night-temp">{day.temp.min.toFixed(0)}°</span>
-                              </div>
-                            </div>
-                          </div>
-                        )
-                      })}
-                    </div>
-                  </div>
+              <div className="col-4 current-location-details">
+                <div className="col-12">
+                  <span className="precipitation">{forecast.current.weather[0].description.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); })}</span>
+                </div>
+                <div className="col-12">
+                  Humidity: <span className="humidity">{forecast.current.humidity}%</span>
+                </div>
+                <div className="col-12">
+                  Wind: <span className="wind-speed">{forecast.current.wind_speed.toFixed(0)}mph</span>
+                </div>
+                <div className="col-12">
+                  As of: <span className="timestamp">{timestamp}</span>
                 </div>
               </div>
             </div>
+            {/* <!--five days forecast--> */}
+            <div className="container text-center five-days-forecast">
+              <div className="row">
+                {forecast.daily.map((day, idx) => {
+                  return (
+                    <div className="col" key={idx}>
+                      <div className="row">
+                        <div className="col-12">{daysInWeek[new Date(getDate(idx + 1)).getDay()]}</div>
+                        <div className="col-12 weather-icon">
+                          <img src={weatherConfig[day.weather[0].icon]} alt="rain" width="40px" />
+                        </div>
+                        <div className="col-12">
+                          <span className="day-temp"> {day.temp.max.toFixed(0)}°/ </span>
+                          <span className="night-temp">{day.temp.min.toFixed(0)}°</span>
+                        </div>
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
           </div>
-        </div>)
+        </>)
         : (<div><iframe src="https://giphy.com/embed/BcuLq7kvQWuftTzBh4" width="480" height="480" className="giphy-embed" allowFullScreen></iframe></div>)
       }
     </>
