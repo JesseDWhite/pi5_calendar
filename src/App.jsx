@@ -67,14 +67,14 @@ const App = () => {
     <>
       {!loading ?
         (<>
-          <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FChicago&title=Family%20Calendar&showTz=0&showPrint=0&src=amVzc2Uud2hpdGU2QGdtYWlsLmNvbQ&src=ZmFtaWx5MTIwMDM0ODMxNzY0MjgxMjczODdAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%230030a5&color=%23616161&color=%230B8043" style={{ borderWidth: 0, borderRadius: '20px' }} width="600" height="720" id='calendar-iframe'></iframe>
+          <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FChicago&showPrint=0&title=Family%20Calendar&showTz=0&src=amVzc2Uud2hpdGU2QGdtYWlsLmNvbQ&src=ZmFtaWx5MTIwMDM0ODMxNzY0MjgxMjczODdAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%23EF6C00&color=%23616161&color=%23795548" style={{ borderWidth: 0, borderRadius: '20px' }} width="600" height="720" id='calendar-iframe'></iframe>
           <div className="container-lg weather-app">
             <div className="row current-location">
               <div className="col current-city" id="current-city">
                 <div className="search-city">
                   <span className="city"> St. Louis </span>
                   <span className="current-weather">
-                    <img src={weatherConfig[forecast.current.weather[0].icon]} alt={forecast.current.weather[0].description} width="65px" />
+                    <img src={weatherConfig[forecast.current.weather[0].icon]} alt={forecast.current.weather[0].description} width="70x" />
                   </span>
                 </div>
                 <div>
@@ -113,7 +113,7 @@ const App = () => {
                       <div className="row">
                         <div className="col-12">{daysInWeek[new Date(getDate(idx + 1)).getDay()]}</div>
                         <div className="col-12 weather-icon">
-                          <img src={weatherConfig[day.weather[0].icon]} alt="rain" width="42px" />
+                          <img src={weatherConfig[day.weather[0].icon]} alt="rain" width="55px" />
                         </div>
                         <div className="col-12">
                           <span className="day-temp"> {day.temp.max.toFixed(0)}°/ </span>
