@@ -30,6 +30,8 @@ const App = () => {
           setLoading(true);
         } else {
           let json = await response.json();
+          json.current.min = json.daily[0].temp.min;
+          json.current.max = json.daily[0].temp.max;
           const removeUneededDays = json.daily.slice(1, 6);
           json.daily = removeUneededDays;
           setForecast(json);
@@ -40,7 +42,7 @@ const App = () => {
       } finally {
         setLoading(false);
         const now = new Date();
-        setTimestamp(now.toLocaleTimeString());
+        setTimestamp(now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true }));
       }
     }
     getForecast();
@@ -83,7 +85,7 @@ const App = () => {
                 </div>
                 <div className="current-date">
                   <span className="day" id="day"> {daysInWeek[new Date().getDay()]} </span>
-                  <span className="time" id="time"></span>
+                  <span className="high-low" id="high-low">hi: {forecast.current.max.toFixed(0)}° low: {forecast.current.min.toFixed(0)}°</span>
                 </div>
               </div>
 
@@ -98,12 +100,12 @@ const App = () => {
                   Wind: <span className="wind-speed">{forecast.current.wind_speed.toFixed(0)}mph</span>
                 </div>
                 <div className="col-12">
-                  As of: <span className="timestamp">{timestamp}</span>
+                  Updated: <span className="timestamp">{timestamp}</span>
                 </div>
               </div>
             </div>
             {/* <!--five days forecast--> */}
-            <div className="container text-center five-days-forecast">
+            <div className="container-lg text-center five-days-forecast">
               <div className="row">
                 {forecast.daily.map((day, idx) => {
                   return (
@@ -111,7 +113,7 @@ const App = () => {
                       <div className="row">
                         <div className="col-12">{daysInWeek[new Date(getDate(idx + 1)).getDay()]}</div>
                         <div className="col-12 weather-icon">
-                          <img src={weatherConfig[day.weather[0].icon]} alt="rain" width="40px" />
+                          <img src={weatherConfig[day.weather[0].icon]} alt="rain" width="42px" />
                         </div>
                         <div className="col-12">
                           <span className="day-temp"> {day.temp.max.toFixed(0)}°/ </span>

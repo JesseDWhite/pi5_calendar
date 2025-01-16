@@ -25,11 +25,11 @@ div.container-lg.weather-app {
   display: block;
   margin: 0 auto;
   padding: 5px;
-  border-radius: 20px;
+  /* border-radius: 20px; */
   /* background-color: rgb(255, 255, 255); */
   background-color: black;
   /* border: 10px solid #F0F4F9; */
-  border: 10px solid #0f0b06;
+  /* border: 10px solid #0f0b06; */
   width: 590px;
 }
 
@@ -41,7 +41,7 @@ div.current-location {
 }
 
 div.col.current-city {
-  padding-left: 50px;
+  padding-left: 45px;
   line-height: 40px;
 }
 
@@ -80,4 +80,8 @@ div.five-days-forecast {
 
 .weather-icon {
   font-size: 35px;
+}
+
+.high-low {
+  padding-left: 10px;
 }
