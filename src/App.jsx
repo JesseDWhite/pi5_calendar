@@ -34,7 +34,6 @@ const App = () => {
           json.current.max = json.daily[0].temp.max;
           const removeUneededDays = json.daily.slice(1, 6);
           json.daily = removeUneededDays;
-          console.log(json)
           setForecast(json);
         }
       } catch (error) {
@@ -75,7 +74,7 @@ const App = () => {
                 <div className="search-city">
                   <span className="city"> St. Louis </span>
                   <span className="current-weather">
-                    <img src={weatherConfig[forecast.current.weather[0].icon][forecast.current.weather[0].id]} alt={forecast.current.weather[0].description} width="68px" />
+                    <img src={weatherConfig[forecast.current.weather[0].icon][forecast.current.weather[0].id]} alt={forecast.current.weather[0].description} width="55px" />
                   </span>
                 </div>
                 <div>
