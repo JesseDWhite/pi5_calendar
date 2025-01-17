@@ -14,6 +14,11 @@ const App = () => {
     return url;
   }
 
+  const getRainChance = (value) => {
+    const percent = value * 100
+    return percent;
+  }
+
   const getDate = (days) => {
     const today = new Date();
     today.setDate(today.getDate() + days);
@@ -32,8 +37,10 @@ const App = () => {
           let json = await response.json();
           json.current.min = json.daily[0].temp.min;
           json.current.max = json.daily[0].temp.max;
+          json.current.pop = json.daily[0].pop;
           const removeUneededDays = json.daily.slice(1, 6);
           json.daily = removeUneededDays;
+          console.log(json)
           setForecast(json);
         }
       } catch (error) {
@@ -94,10 +101,10 @@ const App = () => {
                   <span className="precipitation">{forecast.current.weather[0].description.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); })}</span>
                 </div>
                 <div className="col-12">
-                  Humidity: <span className="humidity">{forecast.current.humidity}%</span>
+                  Clouds: <span className="humidity">{forecast.current.clouds.toFixed(0)}%</span>
                 </div>
                 <div className="col-12">
-                  Wind: <span className="wind-speed">{forecast.current.wind_speed.toFixed(0)}mph</span>
+                  Rain: <span className="wind-speed">{getRainChance(forecast.current.pop)}%</span>
                 </div>
                 <div className="col-12">
                   Updated: <span className="timestamp">{timestamp}</span>
