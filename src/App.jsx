@@ -11,11 +11,6 @@ const App = () => {
   const [modalText, setModalText] = useState('');
   const [selectedDay, setSelectedDay] = useState('');
 
-  const getWeatherIcon = (code) => {
-    const url = `https://openweathermap.org/img/wn/${code}@2x.png`;
-    return url;
-  }
-
   const getRainChance = (value) => {
     const percent = value * 100
     return percent;
@@ -71,7 +66,7 @@ const App = () => {
 
     const intervalId = setInterval(() => {
       getForecast();
-    }, 30 * 60 * 1000); // 30 minutes * 60 seconds * 1000 milliseconds
+    }, 10 * 60 * 1000); // 10 minutes * 60 seconds * 1000 milliseconds
 
     return () => clearInterval(intervalId);
 
