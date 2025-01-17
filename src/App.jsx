@@ -74,7 +74,7 @@ const App = () => {
                 <div className="search-city">
                   <span className="city"> St. Louis </span>
                   <span className="current-weather">
-                    <img src={weatherConfig[forecast.current.weather[0].icon]} alt={forecast.current.weather[0].description} width="70x" />
+                    <img src={weatherConfig[forecast.current.weather[0].icon]} alt={forecast.current.weather[0].description} width="70px" />
                   </span>
                 </div>
                 <div>
