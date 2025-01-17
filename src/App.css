@@ -71,3 +71,24 @@ div.five-days-forecast {
 .high-low {
   padding-left: 10px;
 }
+
+:modal {
+  background-color: black;
+  color: white;
+  border-radius: 25px;
+  border: solid 2px white;
+  text-align: center;
+  width: 550px;
+}
+
+.modal-day {
+  font-size: 30px;
+}
+
+.modal-text {
+  font-size: 20px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}

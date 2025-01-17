@@ -8,6 +8,8 @@ const App = () => {
   const [loading, setLoading] = useState(true);
   const [daysInWeek] = useState(['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']);
   const [timestamp, setTimestamp] = useState(null);
+  const [modalText, setModalText] = useState('');
+  const [selectedDay, setSelectedDay] = useState('');
 
   const getWeatherIcon = (code) => {
     const url = `https://openweathermap.org/img/wn/${code}@2x.png`;
@@ -25,6 +27,19 @@ const App = () => {
     return today;
   }
 
+  const openDialog = (value, day) => {
+    const dialog = document.getElementById('forecast-dialog');
+    dialog.showModal();
+    setSelectedDay(day);
+    setModalText(value);
+  }
+
+  const closeDialog = () => {
+    const dialog = document.getElementById('forecast-dialog');
+    setModalText('');
+    dialog.close();
+  }
+
   useEffect(() => {
     const getForecast = async () => {
       const openWeatherCall = `https://api.openweathermap.org/data/3.0/onecall?lat=38.61593458031881&lon=-90.24595036070286&cnt=7&units=imperial&exclude=hourly,minutely,alerts&appid=${import.meta.env.VITE_API_KEY}`;
@@ -38,9 +53,9 @@ const App = () => {
           json.current.min = json.daily[0].temp.min;
           json.current.max = json.daily[0].temp.max;
           json.current.pop = json.daily[0].pop;
+          json.current.summary = json.daily[0].summary;
           const removeUneededDays = json.daily.slice(1, 6);
           json.daily = removeUneededDays;
-          console.log(json)
           setForecast(json);
         }
       } catch (error) {
@@ -81,7 +96,7 @@ const App = () => {
                 <div className="search-city">
                   <span className="city"> St. Louis </span>
                   <span className="current-weather">
-                    <img src={weatherConfig[forecast.current.weather[0].icon][forecast.current.weather[0].id]} alt={forecast.current.weather[0].description} width="55px" />
+                    <img onClick={() => openDialog(forecast.current.summary, 'Today')} src={weatherConfig[forecast.current.weather[0].icon][forecast.current.weather[0].id]} alt={forecast.current.weather[0].description} width="55px" />
                   </span>
                 </div>
                 <div>
@@ -120,7 +135,7 @@ const App = () => {
                       <div className="row">
                         <div className="col-12">{daysInWeek[new Date(getDate(idx + 1)).getDay()]}</div>
                         <div className="col-12 weather-icon">
-                          <img src={weatherConfig[day.weather[0].icon][day.weather[0].id]} alt={day.weather[0].description} width="55px" />
+                          <img onClick={() => openDialog(day.summary, daysInWeek[new Date(getDate(idx + 1)).getDay()])} src={weatherConfig[day.weather[0].icon][day.weather[0].id]} alt={day.weather[0].description} width="55px" />
                         </div>
                         <div className="col-12">
                           <span className="day-temp"> {day.temp.max.toFixed(0)}°/ </span>
@@ -133,6 +148,12 @@ const App = () => {
               </div>
             </div>
           </div>
+          <dialog id='forecast-dialog'>
+            <p className='modal-day'>{selectedDay}</p>
+            <hr />
+            <p className='modal-text'>{modalText}</p>
+            <button className='btn btn-dark col-6' onClick={() => closeDialog()}>Close</button>
+          </dialog>
         </>)
         : (<div><iframe src="https://giphy.com/embed/BcuLq7kvQWuftTzBh4" width="480" height="480" className="giphy-embed" allowFullScreen></iframe></div>)
       }
