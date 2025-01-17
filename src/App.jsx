@@ -69,7 +69,6 @@ const App = () => {
     }, 10 * 60 * 1000); // 10 minutes * 60 seconds * 1000 milliseconds
 
     return () => clearInterval(intervalId);
-
   }, []);
 
   useEffect(() => {
