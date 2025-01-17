@@ -34,6 +34,7 @@ const App = () => {
           json.current.max = json.daily[0].temp.max;
           const removeUneededDays = json.daily.slice(1, 6);
           json.daily = removeUneededDays;
+          console.log(json)
           setForecast(json);
         }
       } catch (error) {
@@ -74,7 +75,7 @@ const App = () => {
                 <div className="search-city">
                   <span className="city"> St. Louis </span>
                   <span className="current-weather">
-                    <img src={weatherConfig[forecast.current.weather[0].icon]} alt={forecast.current.weather[0].description} width="70px" />
+                    <img src={weatherConfig[forecast.current.weather[0].icon][forecast.current.weather[0].id]} alt={forecast.current.weather[0].description} width="68px" />
                   </span>
                 </div>
                 <div>
@@ -113,7 +114,7 @@ const App = () => {
                       <div className="row">
                         <div className="col-12">{daysInWeek[new Date(getDate(idx + 1)).getDay()]}</div>
                         <div className="col-12 weather-icon">
-                          <img src={weatherConfig[day.weather[0].icon]} alt="rain" width="55px" />
+                          <img src={weatherConfig[day.weather[0].icon][day.weather[0].id]} alt={day.weather[0].description} width="55px" />
                         </div>
                         <div className="col-12">
                           <span className="day-temp"> {day.temp.max.toFixed(0)}°/ </span>
