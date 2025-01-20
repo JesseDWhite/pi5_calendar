@@ -92,3 +92,12 @@ div.five-days-forecast {
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
+.current-weather {
+  width: 55px;
+  height: 55px;
+}
+
+.loading-screen {
+  margin-top: 250px;
+}

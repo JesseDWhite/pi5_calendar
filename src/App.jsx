@@ -89,9 +89,7 @@ const App = () => {
               <div className="col current-city" id="current-city">
                 <div className="search-city">
                   <span className="city"> St. Louis </span>
-                  <span className="current-weather">
-                    <img onClick={() => openDialog(forecast.current.summary, 'Today')} src={weatherConfig[forecast.current.weather[0].icon][forecast.current.weather[0].id]} alt={forecast.current.weather[0].description} width="55px" />
-                  </span>
+                  <img onClick={() => openDialog(forecast.current.summary, 'Today')} src={weatherConfig[forecast.current.weather[0].icon][forecast.current.weather[0].id]} alt={forecast.current.weather[0].description} width="55px" />
                 </div>
                 <div>
                   <span className="temp"> {forecast.current.temp.toFixed(0)} </span>
@@ -149,7 +147,7 @@ const App = () => {
             <button className='btn btn-dark col-6' onClick={() => closeDialog()}>Close</button>
           </dialog>
         </>)
-        : (<div><iframe src="https://giphy.com/embed/BcuLq7kvQWuftTzBh4" width="480" height="480" className="giphy-embed" allowFullScreen></iframe></div>)
+        : (<div className='loading-screen'><iframe src="https://giphy.com/embed/BcuLq7kvQWuftTzBh4" width="480" height="480" className="giphy-embed" allowFullScreen></iframe></div>)
       }
     </>
   )
