@@ -3,12 +3,12 @@
 body {
   background-color: black;
   font-family: "Nunito Sans", sans-serif;
-  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: start;
   overflow-x: hidden;
   overflow-y: hidden;
+  height: 1024px;
   width: 600px;
 }
 
