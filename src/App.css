@@ -19,7 +19,6 @@ body {
 div.container-lg.weather-app {
   display: block;
   margin: 0 auto;
-  padding-left: 5px;
   background-color: black;
   width: 600px;
 }
@@ -28,6 +27,7 @@ div.container-lg.weather-app {
 div.current-location {
   padding: 15px 0;
   color: rgba(255, 255, 255, 0.7);
+  position: relative;
 }
 
 div.col.current-city {
@@ -93,11 +93,13 @@ div.five-days-forecast {
   padding-bottom: 10px;
 }
 
-.current-weather {
-  width: 55px;
-  height: 55px;
-}
-
 .loading-screen {
   margin-top: 250px;
+}
+
+.current-weather {
+  width: 80px;
+  position: absolute;
+  top: 34px;
+  left: 135px;
 }

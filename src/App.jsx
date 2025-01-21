@@ -88,8 +88,8 @@ const App = () => {
             <div className="row current-location">
               <div className="col current-city" id="current-city">
                 <div className="search-city">
-                  <span className="city"> St. Louis </span>
-                  <img onClick={() => openDialog(forecast.current.summary, 'Today')} src={weatherConfig[forecast.current.weather[0].icon][forecast.current.weather[0].id]} alt={forecast.current.weather[0].description} width="55px" />
+                  <span className="city">St. Louis</span>
+                  <img className='current-weather' onClick={() => openDialog(forecast.current.summary, 'Today')} src={weatherConfig[forecast.current.weather[0].icon][forecast.current.weather[0].id]} alt={forecast.current.weather[0].description} />
                 </div>
                 <div>
                   <span className="temp"> {forecast.current.temp.toFixed(0)} </span>
@@ -127,7 +127,7 @@ const App = () => {
                       <div className="row">
                         <div className="col-12">{daysInWeek[new Date(getDate(idx + 1)).getDay()]}</div>
                         <div className="col-12 weather-icon">
-                          <img onClick={() => openDialog(day.summary, daysInWeek[new Date(getDate(idx + 1)).getDay()])} src={weatherConfig[day.weather[0].icon][day.weather[0].id]} alt={day.weather[0].description} width="55px" />
+                          <img onClick={() => openDialog(day.summary, daysInWeek[new Date(getDate(idx + 1)).getDay()])} src={weatherConfig[day.weather[0].icon][day.weather[0].id]} alt={day.weather[0].description} width="65px" />
                         </div>
                         <div className="col-12">
                           <span className="day-temp"> {day.temp.max.toFixed(0)}°/ </span>
