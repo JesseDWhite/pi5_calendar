@@ -8,8 +8,10 @@ body {
   align-items: start;
   overflow-x: hidden;
   overflow-y: hidden;
-  height: 1024px;
-  width: 600px;
+  /* height: 1024px; */
+  /* width: 600px; */
+  height: 100%;
+  width: 100%;
 }
 
 #calendar-iframe {
@@ -99,7 +101,8 @@ div.five-days-forecast {
 
 .current-weather {
   width: 80px;
+  height: 80px;
   position: absolute;
-  top: 34px;
-  left: 135px;
+  top: 10px;
+  left: 140px;
 }
