@@ -1,147 +1,147 @@
 {
     "01d": {
-        "800": "images/clear-day.svg"
+        "800": "images/clear-day.png"
     },
     "01n": {
-        "800": "images/starry-night.svg"
+        "800": "images/starry-night.png"
     },
     "02d": {
-        "801": "images/overcast-day.svg"
+        "801": "images/overcast-day.png"
     },
     "02n": {
-        "801": "images/overcast-night.svg"
+        "801": "images/overcast-night.png"
     },
     "03d": {
-        "802": "images/cloudy.svg"
+        "802": "images/cloudy.png"
     },
     "03n": {
-        "802": "images/cloudy.svg"
+        "802": "images/cloudy.png"
     },
     "04d": {
-        "803": "images/overcast-day.svg",
-        "804": "images/overcast.svg"
+        "803": "images/overcast-day.png",
+        "804": "images/overcast.png"
     },
     "04n": {
-        "803": "images/overcast-night.svg",
-        "804": "images/overcast.svg"
+        "803": "images/overcast-night.png",
+        "804": "images/overcast.png"
     },
     "09d": {
-        "520": "images/overcast-rain.svg",
-        "521": "images/rain.svg",
-        "522": "images/extreme-rain.svg",
-        "300": "images/overcast-day-drizzle.svg",
-        "301": "images/drizzle.svg",
-        "302": "images/extreme-day-drizzle.svg",
-        "310": "images/overcast-drizzle.svg",
-        "311": "images/drizzle.svg",
-        "312": "images/extreme-drizzle.svg",
-        "313": "images/overcast-drizzle.svg",
-        "314": "images/extreme-drizzle.svg",
-        "321": "images/extreme-drizzle.svg"
+        "520": "images/overcast-rain.png",
+        "521": "images/rain.png",
+        "522": "images/extreme-rain.png",
+        "300": "images/overcast-day-drizzle.png",
+        "301": "images/drizzle.png",
+        "302": "images/extreme-day-drizzle.png",
+        "310": "images/overcast-drizzle.png",
+        "311": "images/drizzle.png",
+        "312": "images/extreme-drizzle.png",
+        "313": "images/overcast-drizzle.png",
+        "314": "images/extreme-drizzle.png",
+        "321": "images/extreme-drizzle.png"
     },
     "09n": {
-        "520": "images/overcast-rain.svg",
-        "521": "images/rain.svg",
-        "522": "images/extreme-rain.svg",
-        "531": "images/extreme-rain.svg",
-        "300": "images/overcast-night-drizzle.svg",
-        "301": "images/drizzle.svg",
-        "302": "images/extreme-night-drizzle.svg",
-        "310": "images/overcast-drizzle.svg",
-        "311": "images/drizzle.svg",
-        "312": "images/extreme-drizzle.svg",
-        "313": "images/overcast-drizzle.svg",
-        "314": "images/extreme-drizzle.svg",
-        "321": "images/extreme-drizzle.svg"
+        "520": "images/overcast-rain.png",
+        "521": "images/rain.png",
+        "522": "images/extreme-rain.png",
+        "531": "images/extreme-rain.png",
+        "300": "images/overcast-night-drizzle.png",
+        "301": "images/drizzle.png",
+        "302": "images/extreme-night-drizzle.png",
+        "310": "images/overcast-drizzle.png",
+        "311": "images/drizzle.png",
+        "312": "images/extreme-drizzle.png",
+        "313": "images/overcast-drizzle.png",
+        "314": "images/extreme-drizzle.png",
+        "321": "images/extreme-drizzle.png"
     },
     "10d": {
-        "500": "images/overcast-day-drizzle.svg",
-        "501": "images/overcast-day-rain.svg",
-        "502": "images/extreme-day-drizzle.svg",
-        "503": "images/extreme-day-rain.svg",
-        "504": "images/extreme-day-rain.svg"
+        "500": "images/overcast-day-drizzle.png",
+        "501": "images/overcast-day-rain.png",
+        "502": "images/extreme-day-drizzle.png",
+        "503": "images/extreme-day-rain.png",
+        "504": "images/extreme-day-rain.png"
     },
     "10n": {
-        "500": "images/overcast-night-drizzle.svg",
-        "501": "images/overcast-night-rain.svg",
-        "502": "images/extreme-night-drizzle.svg",
-        "503": "images/extreme-night-rain.svg",
-        "504": "images/extreme-night-rain.svg"
+        "500": "images/overcast-night-drizzle.png",
+        "501": "images/overcast-night-rain.png",
+        "502": "images/extreme-night-drizzle.png",
+        "503": "images/extreme-night-rain.png",
+        "504": "images/extreme-night-rain.png"
     },
     "11d": {
-        "200": "images/thunderstorms-overcast-rain.svg",
-        "201": "images/thunderstorms-rain.svg",
-        "202": "images/thunderstorms-extreme-rain.svg",
-        "210": "images/thunderstorms-day.svg",
-        "211": "images/thunderstorms.svg",
-        "212": "images/thunderstorms-extreme.svg",
-        "221": "images/thunderstorms-extreme.svg",
-        "230": "images/thunderstorms-day-overcast-rain.svg",
-        "231": "images/thunderstorms-day-rain.svg",
-        "232": "images/thunderstorms-day-extreme-rain.svg"
+        "200": "images/thunderstorms-overcast-rain.png",
+        "201": "images/thunderstorms-rain.png",
+        "202": "images/thunderstorms-extreme-rain.png",
+        "210": "images/thunderstorms-day.png",
+        "211": "images/thunderstorms.png",
+        "212": "images/thunderstorms-extreme.png",
+        "221": "images/thunderstorms-extreme.png",
+        "230": "images/thunderstorms-day-overcast-rain.png",
+        "231": "images/thunderstorms-day-rain.png",
+        "232": "images/thunderstorms-day-extreme-rain.png"
     },
     "11n": {
-        "200": "images/thunderstorms-overcast-rain.svg",
-        "201": "images/thunderstorms-rain.svg",
-        "202": "images/thunderstorms-extreme-rain.svg",
-        "210": "images/thunderstorms-night.svg",
-        "211": "images/thunderstorms.svg",
-        "212": "images/thunderstorms-extreme.svg",
-        "221": "images/thunderstorms-extreme.svg",
-        "230": "images/thunderstorms-night-overcast-rain.svg",
-        "231": "images/thunderstorms-night-rain.svg",
-        "232": "images/thunderstorms-night-extreme-rain.svg"
+        "200": "images/thunderstorms-overcast-rain.png",
+        "201": "images/thunderstorms-rain.png",
+        "202": "images/thunderstorms-extreme-rain.png",
+        "210": "images/thunderstorms-night.png",
+        "211": "images/thunderstorms.png",
+        "212": "images/thunderstorms-extreme.png",
+        "221": "images/thunderstorms-extreme.png",
+        "230": "images/thunderstorms-night-overcast-rain.png",
+        "231": "images/thunderstorms-night-rain.png",
+        "232": "images/thunderstorms-night-extreme-rain.png"
     },
     "13d": {
-        "511": "images/sleet.svg",
-        "600": "images/overcast-day-snow.svg",
-        "601": "images/overcast-snow.svg",
-        "602": "images/extreme-snow.svg",
-        "611": "images/overcast-day-sleet.svg",
-        "612": "images/overcast-sleet.svg",
-        "613": "images/overcast-sleet.svg",
-        "615": "images/overcast-sleet.svg",
-        "616": "images/overcast-sleet.svg",
-        "620": "images/overcast-sleet.svg",
-        "621": "images/overcast-sleet.svg",
-        "622": "images/extreme-sleet.svg"
+        "511": "images/sleet.png",
+        "600": "images/overcast-day-snow.png",
+        "601": "images/overcast-snow.png",
+        "602": "images/extreme-snow.png",
+        "611": "images/overcast-day-sleet.png",
+        "612": "images/overcast-sleet.png",
+        "613": "images/overcast-sleet.png",
+        "615": "images/overcast-sleet.png",
+        "616": "images/overcast-sleet.png",
+        "620": "images/overcast-sleet.png",
+        "621": "images/overcast-sleet.png",
+        "622": "images/extreme-sleet.png"
     },
     "13n": {
-        "511": "images/sleet.svg",
-        "600": "images/overcast-night-snow.svg",
-        "601": "images/overcast-snow.svg",
-        "602": "images/extreme-snow.svg",
-        "611": "images/overcast-night-sleet.svg",
-        "612": "images/overcast-sleet.svg",
-        "613": "images/overcast-sleet.svg",
-        "615": "images/overcast-sleet.svg",
-        "616": "images/overcast-sleet.svg",
-        "620": "images/overcast-sleet.svg",
-        "621": "images/overcast-sleet.svg",
-        "622": "images/extreme-sleet.svg"
+        "511": "images/sleet.png",
+        "600": "images/overcast-night-snow.png",
+        "601": "images/overcast-snow.png",
+        "602": "images/extreme-snow.png",
+        "611": "images/overcast-night-sleet.png",
+        "612": "images/overcast-sleet.png",
+        "613": "images/overcast-sleet.png",
+        "615": "images/overcast-sleet.png",
+        "616": "images/overcast-sleet.png",
+        "620": "images/overcast-sleet.png",
+        "621": "images/overcast-sleet.png",
+        "622": "images/extreme-sleet.png"
     },
     "50d": {
-        "701": "images/mist.svg",
-        "711": "images/mist.svg",
-        "721": "images/mist.svg",
-        "731": "images/mist.svg",
-        "741": "images/fog-day.svg",
-        "751": "images/mist.svg",
-        "761": "images/mist.svg",
-        "762": "images/mist.svg",
-        "771": "images/mist.svg",
-        "781": "images/mist.svg"
+        "701": "images/mist.png",
+        "711": "images/mist.png",
+        "721": "images/mist.png",
+        "731": "images/mist.png",
+        "741": "images/fog-day.png",
+        "751": "images/mist.png",
+        "761": "images/mist.png",
+        "762": "images/mist.png",
+        "771": "images/mist.png",
+        "781": "images/mist.png"
     },
     "50n": {
-        "701": "images/mist.svg",
-        "711": "images/mist.svg",
-        "721": "images/mist.svg",
-        "731": "images/mist.svg",
-        "741": "images/fog-night.svg",
-        "751": "images/mist.svg",
-        "761": "images/mist.svg",
-        "762": "images/mist.svg",
-        "771": "images/mist.svg",
-        "781": "images/mist.svg"
+        "701": "images/mist.png",
+        "711": "images/mist.png",
+        "721": "images/mist.png",
+        "731": "images/mist.png",
+        "741": "images/fog-night.png",
+        "751": "images/mist.png",
+        "761": "images/mist.png",
+        "762": "images/mist.png",
+        "771": "images/mist.png",
+        "781": "images/mist.png"
     }
 }
