@@ -37,7 +37,7 @@ const App = () => {
 
   useEffect(() => {
     const getForecast = async () => {
-      const openWeatherCall = `https://api.openweathermap.org/data/3.0/onecall?lat=38.61593458031881&lon=-90.24595036070286&cnt=7&units=imperial&exclude=hourly,minutely,alerts&appid=${import.meta.env.VITE_API_KEY}`;
+      const openWeatherCall = `https://api.openweathermap.org/data/3.0/onecall?lat=38.61593458031881&lon=-90.24595036070286&cnt=7&units=imperial&exclude=day_summary,hourly,minutely,alerts&appid=${import.meta.env.VITE_API_KEY}`;
       try {
         const response = await fetch(openWeatherCall);
         if (!response.ok) {
@@ -45,6 +45,7 @@ const App = () => {
           setLoading(true);
         } else {
           let json = await response.json();
+          console.log(json)
           json.current.min = json.daily[0].temp.min;
           json.current.max = json.daily[0].temp.max;
           json.current.pop = json.daily[0].pop;
@@ -73,7 +74,7 @@ const App = () => {
 
   useEffect(() => {
     const calendarInterval = setInterval(() => {
-      document.getElementById('calendar-iframe').src = "https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FChicago&showPrint=0&title=Family%20Calendar&showTz=0&src=amVzc2Uud2hpdGU2QGdtYWlsLmNvbQ&src=ZmFtaWx5MTIwMDM0ODMxNzY0MjgxMjczODdAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%2326b581&color=%23616161&color=%23795548"
+      document.getElementById('calendar-iframe').src = "https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FChicago&showPrint=0&title=Family%20Calendar&showTz=0&mode=MONTH&showTabs=0&src=amVzc2Uud2hpdGU2QGdtYWlsLmNvbQ&src=M2VjNjJkMDE2NDhmZmU1YTU2NjMyN2U4YzYwYmMxZmIzN2E2YWRiMDU5MTMwMGQ1NGEyNGM0NGE3NzM0NTlmNEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=ZW4uY2hyaXN0aWFuI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%23f09300&color=%23e67c73&color=%230b8043&color=%23a79b8e"
     }, 10 * 60 * 1000); // 10 minutes * 60 seconds * 1000 milliseconds
 
     return () => clearInterval(calendarInterval);
@@ -83,7 +84,7 @@ const App = () => {
     <>
       {!loading ?
         (<>
-          <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FChicago&showPrint=0&title=Family%20Calendar&showTz=0&src=amVzc2Uud2hpdGU2QGdtYWlsLmNvbQ&src=ZmFtaWx5MTIwMDM0ODMxNzY0MjgxMjczODdAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%2326b581&color=%23616161&color=%23795548" style={{ borderWidth: 0, borderRadius: '20px' }} width="600" height="720" id='calendar-iframe'></iframe>
+          <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FChicago&showPrint=0&title=Family%20Calendar&showTz=0&mode=MONTH&showTabs=0&src=amVzc2Uud2hpdGU2QGdtYWlsLmNvbQ&src=M2VjNjJkMDE2NDhmZmU1YTU2NjMyN2U4YzYwYmMxZmIzN2E2YWRiMDU5MTMwMGQ1NGEyNGM0NGE3NzM0NTlmNEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=ZW4uY2hyaXN0aWFuI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%23f09300&color=%23e67c73&color=%230b8043&color=%23a79b8e" style={{ borderWidth: 0, borderRadius: '20px' }} width="600" height="720" id='calendar-iframe'></iframe>
           <div className="container-lg weather-app">
             <div className="row current-location">
               <div className="col current-city" id="current-city">
@@ -101,7 +102,7 @@ const App = () => {
                 </div>
                 <div className="current-date">
                   <span className="day" id="day"> {daysInWeek[new Date().getDay()]} </span>
-                  <span className="high-low" id="high-low">hi: {forecast.current.max.toFixed(0)}° low: {forecast.current.min.toFixed(0)}°</span>
+                  <span className="high-low" id="high-low"><strong>hi </strong>{forecast.current.max.toFixed(0)}° <strong>low </strong>{forecast.current.min.toFixed(0)}°</span>
                 </div>
               </div>
 
@@ -110,13 +111,16 @@ const App = () => {
                   <span className="precipitation">{forecast.current.weather[0].description.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); })}</span>
                 </div>
                 <div className="col-12">
-                  Clouds: <span className="humidity">{forecast.current.clouds.toFixed(0)}%</span>
+                  <strong>Clouds </strong> <span className="humidity">{forecast.current.clouds.toFixed(0)}%</span>
                 </div>
                 <div className="col-12">
-                  Rain: <span className="wind-speed">{getRainChance(forecast.current.pop)}%</span>
+                  <strong>Rain </strong><span className="wind-speed">{getRainChance(forecast.current.pop)}%</span>
                 </div>
                 <div className="col-12">
-                  Updated: <span className="timestamp">{timestamp}</span>
+                  <strong>Humidity </strong><span className="wind-speed">{forecast.current.humidity.toFixed(0)}%</span>
+                </div>
+                <div className="col-12">
+                  <strong>Updated </strong><span className="timestamp">{timestamp}</span>
                 </div>
               </div>
             </div>
@@ -129,7 +133,7 @@ const App = () => {
                       <div className="row">
                         <div className="col-12">{daysInWeek[new Date(getDate(idx + 1)).getDay()]}</div>
                         <div className="col-12 weather-icon">
-                          <img onClick={() => openDialog(day.summary, daysInWeek[new Date(getDate(idx + 1)).getDay()])} src={weatherConfig[day.weather[0].icon][day.weather[0].id]} alt={day.weather[0].description} width="65px" height="65px" />
+                          <img onClick={() => openDialog(day.summary, daysInWeek[new Date(getDate(idx + 1)).getDay()])} src={weatherConfig[day.weather[0].icon][day.weather[0].id]} alt={day.weather[0].description} width="70px" height="70px" />
                         </div>
                         <div className="col-12">
                           <span className="day-temp"> {day.temp.max.toFixed(0)}° / </span>
