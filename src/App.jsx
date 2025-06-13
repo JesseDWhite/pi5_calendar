@@ -102,25 +102,25 @@ const App = () => {
                 </div>
                 <div className="current-date">
                   <span className="day" id="day"> {daysInWeek[new Date().getDay()]} </span>
-                  <span className="high-low" id="high-low"><strong>hi </strong>{forecast.current.max.toFixed(0)}° <strong>low </strong>{forecast.current.min.toFixed(0)}°</span>
+                  <span className="high-low" id="high-low">hi <strong>{forecast.current.max.toFixed(0)}° </strong>low <strong>{forecast.current.min.toFixed(0)}°</strong></span>
                 </div>
               </div>
 
               <div className="col-4 current-location-details">
                 <div className="col-12">
-                  <span className="precipitation">{forecast.current.weather[0].description.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); })}</span>
+                  <span className="precipitation"><strong>{forecast.current.weather[0].description.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); })}</strong></span>
                 </div>
                 <div className="col-12">
-                  <strong>Clouds </strong> <span className="humidity">{forecast.current.clouds.toFixed(0)}%</span>
+                  Clouds <span className="humidity"><strong>{forecast.current.clouds.toFixed(0)}%</strong></span>
                 </div>
                 <div className="col-12">
-                  <strong>Rain </strong><span className="wind-speed">{getRainChance(forecast.current.pop)}%</span>
+                  Rain <span className="wind-speed"><strong>{getRainChance(forecast.current.pop)}%</strong></span>
                 </div>
                 <div className="col-12">
-                  <strong>Humidity </strong><span className="wind-speed">{forecast.current.humidity.toFixed(0)}%</span>
+                  Humidity <span className="wind-speed"><strong>{forecast.current.humidity.toFixed(0)}%</strong></span>
                 </div>
                 <div className="col-12">
-                  <strong>Updated </strong><span className="timestamp">{timestamp}</span>
+                  Updated <span className="timestamp"><strong>{timestamp}</strong></span>
                 </div>
               </div>
             </div>
@@ -129,11 +129,11 @@ const App = () => {
               <div className="row">
                 {forecast.daily.map((day, idx) => {
                   return (
-                    <div className="col" key={idx}>
+                    <div className="col five-day" key={idx}>
                       <div className="row">
                         <div className="col-12">{daysInWeek[new Date(getDate(idx + 1)).getDay()]}</div>
                         <div className="col-12 weather-icon">
-                          <img onClick={() => openDialog(day.summary, daysInWeek[new Date(getDate(idx + 1)).getDay()])} src={weatherConfig[day.weather[0].icon][day.weather[0].id]} alt={day.weather[0].description} width="70px" height="70px" />
+                          <img onClick={() => openDialog(day.summary, daysInWeek[new Date(getDate(idx + 1)).getDay()])} src={weatherConfig[day.weather[0].icon][day.weather[0].id]} alt={day.weather[0].description} width="85px" height="85px" />
                         </div>
                         <div className="col-12">
                           <span className="day-temp"> {day.temp.max.toFixed(0)}° / </span>
