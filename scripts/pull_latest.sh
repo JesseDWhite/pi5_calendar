@@ -2,7 +2,7 @@
 
 set -e
 
-REPO_DIR="~/Desktop/projects/pi5_calendar"
+REPO_DIR="/home/jesse/Desktop/projects/pi5_calendar"
 BRANCH="main"
 
 echo "---- $(date) ----"
