@@ -44,7 +44,7 @@ const App = () => {
 
   useEffect(() => {
     const getForecast = async () => {
-      const openWeatherCall = `https://api.openweathermap.org/data/3.0/onecall?lat=38.61593458031881&lon=-90.24595036070286&cnt=7&units=imperial&exclude=day_summary,hourly,minutely,alerts&appid=${
+      const openWeatherCall = `https://api.openweathermap.org/data/3.0/onecall?lat=38.61593458031881&lon=-90.24595036070286&cnt=7&units=imperial&exclude=minutely&appid=${
         import.meta.env.VITE_API_KEY
       }`;
       try {
@@ -60,7 +60,10 @@ const App = () => {
           json.current.pop = json.daily[0].pop;
           json.current.summary = json.daily[0].summary;
           const removeUneededDays = json.daily.slice(1, 6);
+          json.hourly.shift();
+          const removeUneededHours = json.hourly.slice(0, 5);
           json.daily = removeUneededDays;
+          json.hourly = removeUneededHours;
           setForecast(json);
         }
       } catch (error) {
@@ -101,6 +104,18 @@ const App = () => {
 
     return () => clearInterval(calendarInterval);
   }, []);
+
+  const formatUtcTime = (ms) => {
+    const date = new Date(ms);
+
+    let hours = date.getHours();
+    const ampm = hours >= 12 ? "pm" : "am";
+
+    hours = hours % 12;
+    hours = hours ? hours : 12; // 0 -> 12
+
+    return `${hours} ${ampm}`;
+  };
 
   return (
     <>
@@ -146,8 +161,8 @@ const App = () => {
                     {daysInWeek[new Date().getDay()]}{" "}
                   </span>
                   <span className="high-low" id="high-low">
-                    hi <strong>{forecast.current.max.toFixed(0)}° </strong>low{" "}
-                    <strong>{forecast.current.min.toFixed(0)}°</strong>
+                    {forecast.current.min.toFixed(0)}° ~{" "}
+                    {forecast.current.max.toFixed(0)}°
                   </span>
                 </div>
               </div>
@@ -197,21 +212,22 @@ const App = () => {
             {/* <!--five days forecast--> */}
             <div className="container-lg text-center five-days-forecast">
               <div className="row">
-                {forecast.daily.map((day, idx) => {
+                {forecast.hourly.map((day, idx) => {
                   return (
                     <div className="col five-day" key={idx}>
                       <div className="row">
                         <div className="col-12">
-                          {daysInWeek[new Date(getDate(idx + 1)).getDay()]}
+                          {formatUtcTime(day.dt * 1000)}
+                          {/* {daysInWeek[new Date(getDate(idx + 1)).getDay()]} */}
                         </div>
                         <div className="col-12 weather-icon">
                           <img
-                            onClick={() =>
-                              openDialog(
-                                day.summary,
-                                daysInWeek[new Date(getDate(idx + 1)).getDay()],
-                              )
-                            }
+                            // onClick={() =>
+                            //   openDialog(
+                            //     day.summary,
+                            //     daysInWeek[new Date(getDate(idx + 1)).getDay()],
+                            //   )
+                            // }
                             src={
                               weatherConfig[day.weather[0].icon][
                                 day.weather[0].id
@@ -224,12 +240,15 @@ const App = () => {
                         </div>
                         <div className="col-12">
                           <span className="day-temp">
+                            {day.temp.toFixed(0)}°
+                          </span>
+                          {/* <span className="day-temp">
                             {" "}
                             {day.temp.min.toFixed(0)}° ~{" "}
                           </span>
                           <span className="night-temp">
                             {day.temp.max.toFixed(0)}°
-                          </span>
+                          </span> */}
                         </div>
                       </div>
                     </div>
